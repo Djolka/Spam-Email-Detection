@@ -1,4 +1,4 @@
-# Spam detection using a multi layer perceptron
+# Spam detection using a multi-layer perceptron
 
 
 ![Python](https://img.shields.io/badge/Python-green) 
