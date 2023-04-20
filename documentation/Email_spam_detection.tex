@@ -60,7 +60,7 @@ Za kreiranje count vectorizer matrice koristicemo CountVectorizer iz biblioteke 
 CountVectorizer se koristi sa ciljem da kolekciju tekstualnih dokumenata (u ovom slucaju mail-ovi) pretvori u vektor tokena gde za svaki token imamo koliko se puta ponavlja u svakom dokumentu (mail-u).
 Iako je count vectorizer matrica solidna, TF-IDF matrica moze bolje da da znacaj odredjenim recima, i tako da nam da znacajniju i efikasniju matricu. Ona uzima u obzir ne samo broj ponavljanja reci u nekom dokumentu, vec i koliko je znacajna ta rec u nekom skupu dokumenata. Ovo se radi tako sto se "kazne" reci koje se cesto javljaju u dokumentima, cime se smanjuje njihov znacaj.
 
-\clearpage
+\newpage
 \subsection{Kreiranje TF-IDF matrice}
 Za kreiranje tf-idf matrice koristicemo \textit{TfidfVectorizer} iz biblioteke \textit{sklearn}\\
 
@@ -86,10 +86,10 @@ Za implementaciju viseslojne neuronske mreze koristi se \textit{tensorflow.keras
 
 \includegraphics{tensorflow_keras.png}\\
 \\
-Mrezu cemo modelovati na trening podacima. U ulaznom sloju input\textunderscore dim ce biti X\textunderscore train.shape[1], sto predstavlja broj kolona nase matrice nastale spajanjem TF-IDF matrice i dodavanjem kolone \textit{isSpam} koja nam govori da li je dati dokument (mail) spam ili ne. Posto nas problem predstavlja binarnu klasifikaciju u izlaznom sloju imamo samo jedan cvor, koji sadrzi vrednost [0,1]. Ako je vrednost iznad 0.5, mail je spam, a u suprotnom nije spam. Nakon definisanja nase mreze izvrsavamo kompiliranje naseg modela, gde optimizer postavljamo na \textit{adam}, loss na \textit{binary\textunderscore crossentropy} (jer je nas problem binaran), a za metrics koristimo \textit{accuracy}. Zatim fit-ujemo nas model na trening podacima, X\textunderscore train, i y\textunderscore train. Batch\textunderscore size , epochs i validation\textunderscore split ce biti podesavani.
+Mrezu cemo modelovati na trening podacima. U ulaznom sloju input\textunderscore dim ce biti X\textunderscore train.shape[1]. Posto nas problem predstavlja binarnu klasifikaciju u izlaznom sloju imamo samo jedan cvor, koji sadrzi vrednost [0,1]. Ako je vrednost iznad 0.5, mail je spam, a u suprotnom nije spam. Nakon definisanja nase mreze izvrsavamo kompiliranje naseg modela, gde optimizer postavljamo na \textit{adam}, loss na \textit{binary\textunderscore crossentropy} (jer je nas problem binaran), a za metrics koristimo \textit{accuracy}. Zatim fit-ujemo nas model na trening podacima, X\textunderscore train, i y\textunderscore train. Batch\textunderscore size , epochs i validation\textunderscore split ce biti podesavani.
 
 
-\clearpage
+\newpage
 \subsection{Ocena modela}
 Metode za ocenu modela cemo ukljuciti iz sklearn.metrics biblioteke:\\
 \\
@@ -105,9 +105,9 @@ $$\frac{TP}{(TP + FP)}$$ \\
 Ove ocene ce nam pomoci u odlucivanju efikasnosti nase mreze i potencijalnoj optimizaciji iste.
 
 
- \clearpage
+ \newpage
 \section{Rezultati modela}
-Za aktivacionu funkciju ulaznog sloja cemo staviti \textit{Relu} aktivacionu funkciju, a za aktivacionu funkciju izlaznog sloja cemo uvek koristiti \textit{sigmoidnu} funkciju: \\
+Za aktivacionu funkciju ulaznog sloja cemo koristiti \textit{Relu} aktivacionu funkciju, a za aktivacionu funkciju izlaznog sloja cemo uvek koristiti \textit{sigmoidnu} funkciju: \\
 \\
 \\
  \includegraphics{sigmoid.png}\\
@@ -153,7 +153,7 @@ $$\includegraphics[scale=2]{conf_matrix.png}\\$$
 \\
 \section{Zaključak}
 Na osnovu rezultata iz prethodnih plotova i tabela, mozemo da zakljucimo da model daje zadovoljavajuce rezultate i moze sa velikom tacnoscu da otkrije spam mail-ove. Dodavanjem velikog broj skrivenih slojeva necemo nuzno poboljsati nas model vec cemo tim smanjiti efikasnost na sta treba da se obrati paznja. Treba pazljivo izabrati procenat skupa za treniranje i za testiranje, kao i za validacioni skup.\\ 
-Takodje, kvalitet skupa podataka igra veliku ulogu u tome koliko ce efikasan model biti i iz tog razloga pretprocesiranje podataka nije nista manje bitno od samog modelovanje mreze. 
+Takodje, kvalitet skupa podataka igra veliku ulogu u tome koliko ce efikasan model biti i iz tog razloga pretprocesiranje podataka nije nista manje bitno od samog modelovanja mreze. 
 
 
 % \newpage
