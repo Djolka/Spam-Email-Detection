@@ -76,6 +76,17 @@ $$ IDF(t,d,D) = \log\frac{|D|}{|\{d\in D, t \in d\}|} $$\\
 Na kraju za dobijanje TF-IDF vrednosti potrebno je da pomnozimo dve prethodno dobijene vrednosti:
 $$TFIDF(t,d,D) = TF(t,d) * IDF(t,D)$$
 
+\subsection{Word2Vec}
+Word2Vec je tehnika pomocu koje se obradjuje prirodan jezik. Pomocu neuronske mreze uci o vezama izmedju odredjenih reci iz nekog skupa teksta. Ovaj model moze da pronadje sinonime reci, ili da dopuni parcijalno uredjene recenice. Svaka rec je predstavljena pomocu odredjene liste brojeva (vektor), koji se kao takav, moze upotrebiti moze ukazati na odredjene semanticke slicnosti izmedju reci predstavljenih tim vektorima. Ulaz u Word2Vec je skup tekstova, a izlaz je skup vektora koji predstavljaju te tekstove.\\
+Postoje dve vrste treniranja reci: 
+\begin{itemize}
+    \item Koriscenje konteksta za predvidjanje ciljane reci (CBOW)
+    \item Koriscenje reci za predvidjanje ciljanog konteksta (skip-gram)
+\end{itemize}
+\includegraphics[scale=0.7]{word2vecpic.png}
+
+Za nas model, u funkciji \textit{gensim.models.Word2Vec() } podesicemo paramtere \textit{window} i \textit{min\textunderscore count} kako bi nas model radio sto preciznije. Podesavanjem window parametra, primeceno je da za vrednosti od par stotina (od 100 do 700), i min\textunderscore count-a od oko 5 (ignorise sve reci koje imaju TF manji od ovog) dobijamo efikasan model koji nam daje preciznost od ~0.911.
+
 
 \subsection{Train-test split}
 Da bismo mogli da upotrebimo podatke tako da nas model moze na najbolji nacin da uci nad njima, moramo ih podeliti na \textit{train} i na \textit{test} skupove. Nad \textit{train} skupom cemo da istreniramo nas model, nakon cega ce model to steceno znanje da iskoristi u evaluaciji test podataka.\\
